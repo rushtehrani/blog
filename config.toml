@@ -1,0 +1,15 @@
+baseurl = "http://www.rushtehrani.com.s3-website-us-west-2.amazonaws.com/"
+languageCode = "en-us"
+title="Rush Tehrani"
+theme="nofancy"
+
+[params]
+    highlight="github"
+
+[author]
+    name = "Rush Tehrani"
+    github = "rushtehrani"
+    linkedin = "rushtehrani"
+    facebook = "rustehrani"
+    gaID = "YOUR Google Analytics Tracking ID"
+    twitter = "rushtehrani"

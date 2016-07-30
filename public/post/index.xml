@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Rush Tehrani</title>
+    <link>http://www.rushtehrani.com.s3-website-us-west-2.amazonaws.com/post/</link>
+    <description>Recent content in Posts on Rush Tehrani</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 30 Jul 2016 09:21:30 -0700</lastBuildDate>
+    <atom:link href="http://www.rushtehrani.com.s3-website-us-west-2.amazonaws.com/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Kubernetes on Google Container Engine</title>
+      <link>http://www.rushtehrani.com.s3-website-us-west-2.amazonaws.com/post/kubernetes-on-google-container-engine/</link>
+      <pubDate>Sat, 30 Jul 2016 09:21:30 -0700</pubDate>
+      
+      <guid>http://www.rushtehrani.com.s3-website-us-west-2.amazonaws.com/post/kubernetes-on-google-container-engine/</guid>
+      <description>&lt;p&gt;This is a quick walkthrough to show you how to spin up a very small Kubernetes (K8S) cluster on Google Cloud Platform (GCE) and then get access to the K8S REST API.&lt;/p&gt;
+
+&lt;p&gt;Before you get started, you need to sign-in to &lt;a href=&#34;https://console.cloud.google.com&#34; target=&#34;blank&#34;&gt;Google Cloud Platform console&lt;/a&gt; and create a new project. If you don’t already have a Google Account, you can &lt;a href=&#34;https://accounts.google.com/SignUp&#34; target=&#34;blank&#34;&gt;create one&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;First, you need to download GCE’s command line interface &lt;code&gt;gcloud&lt;/code&gt;. The easiest way to install and initialize &lt;code&gt;gcloud&lt;/code&gt; is via the Quickstarts. You can stop after the Initialize SDK section and continue with the instructions in this post.&lt;/p&gt;
+
+&lt;p&gt;Once you are done initializing &lt;code&gt;glcoud&lt;/code&gt;, you can then use it to install K8S command line interface &lt;code&gt;kubectl&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;gcloud components install kubectl
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We’ll be using &lt;code&gt;kubectl&lt;/code&gt; to get information about our K8S cluster and set up a proxy to our K8S API.&lt;/p&gt;
+
+&lt;p&gt;Next thing we need to do is to spin up our one node K8S cluster:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;gcloud container --project &amp;quot;my-project&amp;quot; clusters create &amp;quot;my-cluster&amp;quot; --zone &amp;quot;us-west1-a&amp;quot; --machine-type &amp;quot;g1-small&amp;quot; --num-nodes &amp;quot;1&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Where:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;--project &amp;quot;my-project&amp;quot;&lt;/code&gt; is the name of the project you created above.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;&amp;quot;my-cluster&amp;quot;&lt;/code&gt; is the name of your cluster&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;--zone &amp;quot;us-west1-a&amp;quot;&lt;/code&gt; is your cluster’s zone, see Regions and Zones for more information.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;--machine-type &amp;quot;g1-small&amp;quot;&lt;/code&gt; is the machine type, see Machine Types for more information.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;--num-nodes &amp;quot;1&amp;quot;&lt;/code&gt; is the number of nodes to allocate for this cluster.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Alternatively, you can add your cluster in the Google Container Engine console.&lt;/p&gt;
+
+&lt;p&gt;After a few minutes, our cluster should be up and running. To verify that it’s running, first set &lt;code&gt;gloud&lt;/code&gt; to point to your cluster zone:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;gcloud config set compute/zone us-west1-a
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Then get a list of your running clusters:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;gcloud container clusters list
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You should see &lt;code&gt;my-cluster&lt;/code&gt; (or your own cluster name) on the list and it should have a status &lt;code&gt;RUNNING&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Next, we need to get our cluster endpoint and credentials and update our &lt;code&gt;kubectl&lt;/code&gt; config to point to our newly created cluster:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;gcloud container clusters get-credentials my-cluster
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now that kubectl is set to point to our new cluster, we should be able to use it to get information on our K8S cluster:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;kubectl config view
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This will give us the IP address, username and password that we need to access the K8S admin UI at &lt;code&gt;https://&amp;lt;ip address&amp;gt;/ui&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;The next thing we want to do is use &lt;code&gt;kubectl&lt;/code&gt; as a proxy to our K8S cluster’s API:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;kubectl proxy --port=8080 &amp;amp;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now you can interface with your K8S cluster’s API using your local endpoint at &lt;a href=&#34;http://localhost:8080/api/v1&#34;&gt;http://localhost:8080/api/v1&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
