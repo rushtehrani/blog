@@ -29,11 +29,11 @@ Where:
 
 - `--project "my-project"` is the name of the project you created above.
 - `"my-cluster"` is the name of your cluster
-- `--zone "us-west1-a"` is your cluster’s zone, see Regions and Zones for more information.
-- `--machine-type "g1-small"` is the machine type, see Machine Types for more information.
+- `--zone "us-west1-a"` is your cluster’s zone, see <a href="https://cloud.google.com/compute/docs/regions-zones/regions-zones" target="blank">Regions and Zones</a> for more information.
+- `--machine-type "g1-small"` is the machine type, see <a href="https://cloud.google.com/compute/docs/machine-types" target="blank">Machine Types</a> for more information.
 - `--num-nodes "1"` is the number of nodes to allocate for this cluster.
 
-Alternatively, you can add your cluster in the Google Container Engine console.
+Alternatively, you can <a href="https://console.cloud.google.com/kubernetes/add" target="blank">add your cluster</a> in the Google Container Engine console.
 
 After a few minutes, our cluster should be up and running. To verify that it’s running, first get a list of your running clusters:
 
@@ -43,30 +43,22 @@ gcloud container clusters list
 
 You should see `my-cluster` (or your own cluster name) on the list and it should have a status `RUNNING`.
 
-Next, we need to get our cluster endpoint and credentials and update our `kubectl` config to point to our newly created cluster.  In order to do that, we need to set our config to point to our cluster's zone:
+Next, we need to configure `kubectl` command line access:
 
 ```sh
-gcloud config set compute/zone us-west1-a
+gcloud container clusters get-credentials my-cluster --zone us-west1-a
 ```
 
-and then fetch and set the credentials for your cluster:
-
-```sh
-gcloud container clusters get-credentials my-cluster
-```
-
-Now that `kubectl` is set to point to our new cluster, we should be able to use it to get information on our K8S cluster:
-
-```sh
-kubectl config view
-```
-
-This will give us the IP address, username and password that we need to access the K8S admin UI at `https://<ip address>/ui`
-
-The next thing we want to do is use `kubectl` as a proxy to our K8S cluster’s API:
+Then start a proxy to connect to K8S control plane:
 
 ```sh
 kubectl proxy --port=8080 &
 ```
 
-Now you can interface with your K8S cluster’s API using your local endpoint at http://localhost:8080/api/v1.
+Now you can access K8S Dashboard in your browser at:
+
+http://localhost:8080/ui
+
+And access K8S API at:
+
+http://localhost:8080/api/v1.

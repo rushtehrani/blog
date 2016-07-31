@@ -47,24 +47,24 @@
 
 &lt;p&gt;Alternatively, you can add your cluster in the Google Container Engine console.&lt;/p&gt;
 
-&lt;p&gt;After a few minutes, our cluster should be up and running. To verify that it’s running, first set &lt;code&gt;gcloud&lt;/code&gt; to point to your cluster zone:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;gcloud config set compute/zone us-west1-a
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Then get a list of your running clusters:&lt;/p&gt;
+&lt;p&gt;After a few minutes, our cluster should be up and running. To verify that it’s running, first get a list of your running clusters:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;gcloud container clusters list
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;You should see &lt;code&gt;my-cluster&lt;/code&gt; (or your own cluster name) on the list and it should have a status &lt;code&gt;RUNNING&lt;/code&gt;.&lt;/p&gt;
 
-&lt;p&gt;Next, we need to get our cluster endpoint and credentials and update our &lt;code&gt;kubectl&lt;/code&gt; config to point to our newly created cluster:&lt;/p&gt;
+&lt;p&gt;Next, we need to get our cluster endpoint and credentials and update our &lt;code&gt;kubectl&lt;/code&gt; config to point to our newly created cluster.  In order to do that, we need to set our config to point to our cluster&amp;rsquo;s zone:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;gcloud config set compute/zone us-west1-a
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;and then fetch and set the credentials for your cluster:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;gcloud container clusters get-credentials my-cluster
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Now that kubectl is set to point to our new cluster, we should be able to use it to get information on our K8S cluster:&lt;/p&gt;
+&lt;p&gt;Now that &lt;code&gt;kubectl&lt;/code&gt; is set to point to our new cluster, we should be able to use it to get information on our K8S cluster:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;kubectl config view
 &lt;/code&gt;&lt;/pre&gt;
