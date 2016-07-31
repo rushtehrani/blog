@@ -7,9 +7,11 @@ theme="nofancy"
     highlight="github"
 
 [author]
+    email = "hello@rushtehrani.com"
     name = "Rush Tehrani"
     github = "rushtehrani"
     linkedin = "rushtehrani"
     facebook = "rustehrani"
-    gaID = "YOUR Google Analytics Tracking ID"
+    google = "RushTehrani"
+    gaID = "UA-54533300-1"
     twitter = "rushtehrani"

@@ -2,14 +2,14 @@
 date = "2016-07-30T09:21:30-07:00"
 draft = false
 title = "Kubernetes on Google Container Engine"
-tags = ["kubernetes","google container engine","docker"]
+tags = ["kubernetes", "google container engine", "docker"]
 +++
 
 This is a quick walkthrough to show you how to spin up a very small Kubernetes (K8S) cluster on Google Cloud Platform (GCE) and then get access to the K8S REST API.
 
 Before you get started, you need to sign-in to <a href="https://console.cloud.google.com" target="blank">Google Cloud Platform console</a> and create a new project. If you don’t already have a Google Account, you can <a href="https://accounts.google.com/SignUp" target="blank">create one</a>.
 
-First, you need to download GCE’s command line interface `gcloud`. The easiest way to install and initialize `gcloud` is via the Quickstarts. You can stop after the Initialize SDK section and continue with the instructions in this post.
+First, you need to download GCE’s command line interface `gcloud`. The easiest way to install and initialize `gcloud` is via the <a href="https://cloud.google.com/sdk/docs/quickstarts" target="blank">Quickstarts</a>. You can stop after the Initialize SDK section and continue with the instructions in this post.
 
 Once you are done initializing `gcloud`, you can then use it to install K8S command line interface `kubectl`:
 
