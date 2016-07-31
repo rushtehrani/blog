@@ -35,13 +35,7 @@ Where:
 
 Alternatively, you can add your cluster in the Google Container Engine console.
 
-After a few minutes, our cluster should be up and running. To verify that it’s running, first set `gcloud` to point to your cluster zone:
-
-```sh
-gcloud config set compute/zone us-west1-a
-```
-
-Then get a list of your running clusters:
+After a few minutes, our cluster should be up and running. To verify that it’s running, first get a list of your running clusters:
 
 ```sh
 gcloud container clusters list
@@ -49,13 +43,19 @@ gcloud container clusters list
 
 You should see `my-cluster` (or your own cluster name) on the list and it should have a status `RUNNING`.
 
-Next, we need to get our cluster endpoint and credentials and update our `kubectl` config to point to our newly created cluster:
+Next, we need to get our cluster endpoint and credentials and update our `kubectl` config to point to our newly created cluster.  In order to do that, we need to set our config to point to our cluster's zone:
+
+```sh
+gcloud config set compute/zone us-west1-a
+```
+
+and then fetch and set the credentials for your cluster:
 
 ```sh
 gcloud container clusters get-credentials my-cluster
 ```
 
-Now that kubectl is set to point to our new cluster, we should be able to use it to get information on our K8S cluster:
+Now that `kubectl` is set to point to our new cluster, we should be able to use it to get information on our K8S cluster:
 
 ```sh
 kubectl config view

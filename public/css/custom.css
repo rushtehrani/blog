@@ -10,7 +10,7 @@ html {
 }
 
 body {
-	background-color: rgb(249,249,249);
+	background-color: rgb(254,254,254);
 	color: #484848;
 }
 
@@ -41,7 +41,8 @@ body {
 .header .site-title {
 	font-weight: bold;
 	color: #484848;
-	font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-family: "Open Sans", sans-serif;
+	font-weight: 300;
 }
 
 .pull-right {
@@ -49,7 +50,6 @@ body {
 }
 
 .posts-name {
-	text-transform: capitalize;
 	font-weight: bold;
 	padding-left: 1em;
 	margin-top: 1em;
@@ -71,7 +71,7 @@ body {
 }
 
 .posts li a {
-	color:#369;
+	color:#08C;
 	text-decoration:none;
 }
 
@@ -134,7 +134,7 @@ body {
 	font-family: proxima-nova,"Helvetica Neue",Helvetica,Roboto,Arial,sans-serif;
 	color:#484848;
 	letter-spacing:normal;
-	padding-left: .5em;
+	padding-left: 1em;
 }
 
 .post h1,h2,h3,h4,h5,h6 {
@@ -152,12 +152,12 @@ body {
 }
 
 .post a {
-	color:#c05b4d;
+	color:#08C;
 	text-decoration: none;
 }
 
 .post a:hover {
-	color:#a5473a;
+	color:#08C;
 	text-decoration: underline;
 }
 
@@ -186,8 +186,10 @@ body {
 }
 
 .post-title{
-		margin-top: 0;
-		margin-bottom: 2em;
+		margin-top: 1em;
+		margin-bottom: 1em;
+		font-family: "Open Sans", sans-serif;
+		font-weight: 300;
 }
 
 .post-title h1 {
@@ -231,4 +233,21 @@ body {
 	.desktop {
 		display: block;
 	}
+}
+
+.pure-menu-active>.pure-menu-link, .pure-menu-link:hover, .pure-menu-link:focus {
+	background: none;
+}
+
+#share-menu {
+	height: 20px;
+}
+
+#share-menu li {
+	font-size: 16px;
+	margin-right: 5px;
+}
+
+#share-menu li a {
+	color: #555;
 }

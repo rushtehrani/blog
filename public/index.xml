@@ -6,6 +6,8 @@
     <description>Recent content on Rush Tehrani</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <managingEditor>hello@rushtehrani.com (Rush Tehrani)</managingEditor>
+    <webMaster>hello@rushtehrani.com (Rush Tehrani)</webMaster>
     <lastBuildDate>Sat, 30 Jul 2016 09:21:30 -0700</lastBuildDate>
     <atom:link href="http://www.rushtehrani.com.s3-website-us-west-2.amazonaws.com/index.xml" rel="self" type="application/rss+xml" />
     
@@ -13,15 +15,15 @@
       <title>Kubernetes on Google Container Engine</title>
       <link>http://www.rushtehrani.com.s3-website-us-west-2.amazonaws.com/post/kubernetes-on-google-container-engine/</link>
       <pubDate>Sat, 30 Jul 2016 09:21:30 -0700</pubDate>
-      
+      <author>hello@rushtehrani.com (Rush Tehrani)</author>
       <guid>http://www.rushtehrani.com.s3-website-us-west-2.amazonaws.com/post/kubernetes-on-google-container-engine/</guid>
       <description>&lt;p&gt;This is a quick walkthrough to show you how to spin up a very small Kubernetes (K8S) cluster on Google Cloud Platform (GCE) and then get access to the K8S REST API.&lt;/p&gt;
 
 &lt;p&gt;Before you get started, you need to sign-in to &lt;a href=&#34;https://console.cloud.google.com&#34; target=&#34;blank&#34;&gt;Google Cloud Platform console&lt;/a&gt; and create a new project. If you don’t already have a Google Account, you can &lt;a href=&#34;https://accounts.google.com/SignUp&#34; target=&#34;blank&#34;&gt;create one&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;First, you need to download GCE’s command line interface &lt;code&gt;gcloud&lt;/code&gt;. The easiest way to install and initialize &lt;code&gt;gcloud&lt;/code&gt; is via the Quickstarts. You can stop after the Initialize SDK section and continue with the instructions in this post.&lt;/p&gt;
+&lt;p&gt;First, you need to download GCE’s command line interface &lt;code&gt;gcloud&lt;/code&gt;. The easiest way to install and initialize &lt;code&gt;gcloud&lt;/code&gt; is via the &lt;a href=&#34;https://cloud.google.com/sdk/docs/quickstarts&#34; target=&#34;blank&#34;&gt;Quickstarts&lt;/a&gt;. You can stop after the Initialize SDK section and continue with the instructions in this post.&lt;/p&gt;
 
-&lt;p&gt;Once you are done initializing &lt;code&gt;glcoud&lt;/code&gt;, you can then use it to install K8S command line interface &lt;code&gt;kubectl&lt;/code&gt;:&lt;/p&gt;
+&lt;p&gt;Once you are done initializing &lt;code&gt;gcloud&lt;/code&gt;, you can then use it to install K8S command line interface &lt;code&gt;kubectl&lt;/code&gt;:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;gcloud components install kubectl
 &lt;/code&gt;&lt;/pre&gt;
@@ -45,7 +47,7 @@
 
 &lt;p&gt;Alternatively, you can add your cluster in the Google Container Engine console.&lt;/p&gt;
 
-&lt;p&gt;After a few minutes, our cluster should be up and running. To verify that it’s running, first set &lt;code&gt;gloud&lt;/code&gt; to point to your cluster zone:&lt;/p&gt;
+&lt;p&gt;After a few minutes, our cluster should be up and running. To verify that it’s running, first set &lt;code&gt;gcloud&lt;/code&gt; to point to your cluster zone:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;gcloud config set compute/zone us-west1-a
 &lt;/code&gt;&lt;/pre&gt;
