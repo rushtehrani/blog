@@ -52,13 +52,13 @@ gcloud container clusters get-credentials my-cluster --zone us-west1-a
 Then start a proxy to connect to K8S control plane:
 
 ```sh
-kubectl proxy --port=8080 &
+kubectl proxy &
 ```
 
 Now you can access K8S Dashboard in your browser at:
 
-http://localhost:8080/ui
+http://localhost:8001/ui
 
 And access K8S REST API at:
 
-http://localhost:8080/api/v1.
+http://localhost:8001/api/v1.
