@@ -190,12 +190,12 @@
 <ul>
 <li><code>--project &quot;my-project&quot;</code> is the name of the project you created above.</li>
 <li><code>&quot;my-cluster&quot;</code> is the name of your cluster</li>
-<li><code>--zone &quot;us-west1-a&quot;</code> is your cluster’s zone, see Regions and Zones for more information.</li>
-<li><code>--machine-type &quot;g1-small&quot;</code> is the machine type, see Machine Types for more information.</li>
+<li><code>--zone &quot;us-west1-a&quot;</code> is your cluster’s zone, see <a href="https://cloud.google.com/compute/docs/regions-zones/regions-zones" target="blank">Regions and Zones</a> for more information.</li>
+<li><code>--machine-type &quot;g1-small&quot;</code> is the machine type, see <a href="https://cloud.google.com/compute/docs/machine-types" target="blank">Machine Types</a> for more information.</li>
 <li><code>--num-nodes &quot;1&quot;</code> is the number of nodes to allocate for this cluster.</li>
 </ul>
 
-<p>Alternatively, you can add your cluster in the Google Container Engine console.</p>
+<p>Alternatively, you can <a href="https://console.cloud.google.com/kubernetes/add" target="blank">add your cluster</a> in the Google Container Engine console.</p>
 
 <p>After a few minutes, our cluster should be up and running. To verify that it’s running, first get a list of your running clusters:</p>
 
@@ -204,29 +204,23 @@
 
 <p>You should see <code>my-cluster</code> (or your own cluster name) on the list and it should have a status <code>RUNNING</code>.</p>
 
-<p>Next, we need to get our cluster endpoint and credentials and update our <code>kubectl</code> config to point to our newly created cluster.  In order to do that, we need to set our config to point to our cluster&rsquo;s zone:</p>
+<p>Next, we need to configure <code>kubectl</code> command line access:</p>
 
-<pre><code class="language-sh">gcloud config set compute/zone us-west1-a
+<pre><code class="language-sh">gcloud container clusters get-credentials my-cluster --zone us-west1-a
 </code></pre>
 
-<p>and then fetch and set the credentials for your cluster:</p>
-
-<pre><code class="language-sh">gcloud container clusters get-credentials my-cluster
-</code></pre>
-
-<p>Now that <code>kubectl</code> is set to point to our new cluster, we should be able to use it to get information on our K8S cluster:</p>
-
-<pre><code class="language-sh">kubectl config view
-</code></pre>
-
-<p>This will give us the IP address, username and password that we need to access the K8S admin UI at <code>https://&lt;ip address&gt;/ui</code></p>
-
-<p>The next thing we want to do is use <code>kubectl</code> as a proxy to our K8S cluster’s API:</p>
+<p>Then start a proxy to connect to K8S control plane:</p>
 
 <pre><code class="language-sh">kubectl proxy --port=8080 &amp;
 </code></pre>
 
-<p>Now you can interface with your K8S cluster’s API using your local endpoint at <a href="http://localhost:8080/api/v1">http://localhost:8080/api/v1</a>.</p>
+<p>Now you can access K8S Dashboard in your browser at:</p>
+
+<p><a href="http://localhost:8080/ui">http://localhost:8080/ui</a></p>
+
+<p>And access K8S API at:</p>
+
+<p><a href="http://localhost:8080/api/v1">http://localhost:8080/api/v1</a>.</p>
 
                 <p class="footnote">
                     <time datetime="2016-07-30T09:21:30-07:00" class="timeago">2016-07-30T09:21:30-07:00</time>

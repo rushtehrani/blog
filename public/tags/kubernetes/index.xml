@@ -40,12 +40,12 @@
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;--project &amp;quot;my-project&amp;quot;&lt;/code&gt; is the name of the project you created above.&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;&amp;quot;my-cluster&amp;quot;&lt;/code&gt; is the name of your cluster&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;--zone &amp;quot;us-west1-a&amp;quot;&lt;/code&gt; is your cluster’s zone, see Regions and Zones for more information.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;--machine-type &amp;quot;g1-small&amp;quot;&lt;/code&gt; is the machine type, see Machine Types for more information.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;--zone &amp;quot;us-west1-a&amp;quot;&lt;/code&gt; is your cluster’s zone, see &lt;a href=&#34;https://cloud.google.com/compute/docs/regions-zones/regions-zones&#34; target=&#34;blank&#34;&gt;Regions and Zones&lt;/a&gt; for more information.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;--machine-type &amp;quot;g1-small&amp;quot;&lt;/code&gt; is the machine type, see &lt;a href=&#34;https://cloud.google.com/compute/docs/machine-types&#34; target=&#34;blank&#34;&gt;Machine Types&lt;/a&gt; for more information.&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;--num-nodes &amp;quot;1&amp;quot;&lt;/code&gt; is the number of nodes to allocate for this cluster.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Alternatively, you can add your cluster in the Google Container Engine console.&lt;/p&gt;
+&lt;p&gt;Alternatively, you can &lt;a href=&#34;https://console.cloud.google.com/kubernetes/add&#34; target=&#34;blank&#34;&gt;add your cluster&lt;/a&gt; in the Google Container Engine console.&lt;/p&gt;
 
 &lt;p&gt;After a few minutes, our cluster should be up and running. To verify that it’s running, first get a list of your running clusters:&lt;/p&gt;
 
@@ -54,29 +54,23 @@
 
 &lt;p&gt;You should see &lt;code&gt;my-cluster&lt;/code&gt; (or your own cluster name) on the list and it should have a status &lt;code&gt;RUNNING&lt;/code&gt;.&lt;/p&gt;
 
-&lt;p&gt;Next, we need to get our cluster endpoint and credentials and update our &lt;code&gt;kubectl&lt;/code&gt; config to point to our newly created cluster.  In order to do that, we need to set our config to point to our cluster&amp;rsquo;s zone:&lt;/p&gt;
+&lt;p&gt;Next, we need to configure &lt;code&gt;kubectl&lt;/code&gt; command line access:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;gcloud config set compute/zone us-west1-a
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;gcloud container clusters get-credentials my-cluster --zone us-west1-a
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;and then fetch and set the credentials for your cluster:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;gcloud container clusters get-credentials my-cluster
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Now that &lt;code&gt;kubectl&lt;/code&gt; is set to point to our new cluster, we should be able to use it to get information on our K8S cluster:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;kubectl config view
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;This will give us the IP address, username and password that we need to access the K8S admin UI at &lt;code&gt;https://&amp;lt;ip address&amp;gt;/ui&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;The next thing we want to do is use &lt;code&gt;kubectl&lt;/code&gt; as a proxy to our K8S cluster’s API:&lt;/p&gt;
+&lt;p&gt;Then start a proxy to connect to K8S control plane:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;kubectl proxy --port=8080 &amp;amp;
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Now you can interface with your K8S cluster’s API using your local endpoint at &lt;a href=&#34;http://localhost:8080/api/v1&#34;&gt;http://localhost:8080/api/v1&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Now you can access K8S Dashboard in your browser at:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://localhost:8080/ui&#34;&gt;http://localhost:8080/ui&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;And access K8S API at:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://localhost:8080/api/v1&#34;&gt;http://localhost:8080/api/v1&lt;/a&gt;.&lt;/p&gt;
 </description>
     </item>
     

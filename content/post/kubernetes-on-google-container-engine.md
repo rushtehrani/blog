@@ -59,6 +59,6 @@ Now you can access K8S Dashboard in your browser at:
 
 http://localhost:8080/ui
 
-And access K8S API at:
+And access K8S REST API at:
 
 http://localhost:8080/api/v1.
