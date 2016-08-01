@@ -1,0 +1,53 @@
+<!-- Social Share Button HTML -->
+<li class="pure-menu-item">
+  Share: 
+</li>
+
+<!-- Twitter -->
+<li class="pure-menu-item">
+  <a href="//twitter.com/share?url={{ .Permalink }}&text={{ .Title }}&via={{ .Site.Social.twitter }}" target="_blank" class="share-btn twitter">
+    <i class="fa fa-twitter"></i>
+  </a>
+</li>
+
+<!-- LinkedIn -->
+<li class="pure-menu-item">
+  <a href="//www.linkedin.com/shareArticle?url={{ .Permalink }}&title={{ .Title }}" target="_blank" class="share-btn linkedin">
+    <i class="fa fa-linkedin"></i>
+  </a>
+</li>
+
+<!-- Google Plus -->
+<li class="pure-menu-item">
+  <a href="//plus.google.com/share?url={{ .Permalink }}" target="_blank" class="share-btn google-plus">
+    <i class="fa fa-google-plus"></i>
+  </a>
+</li>
+
+<!-- Facebook -->
+<li class="pure-menu-item">
+  <a href="//www.facebook.com/sharer/sharer.php?u={{ .Permalink }}" target="_blank" class="share-btn facebook">
+    <i class="fa fa-facebook"></i>
+  </a>
+</li>
+
+<!-- Reddit (url, title) -->
+<li class="pure-menu-item">
+  <a href="//reddit.com/submit?url={{ .Permalink }}&title={{ .Title }}" target="_blank" class="share-btn reddit">
+    <i class="fa fa-reddit-alien"></i>
+  </a>
+</li>
+
+<!-- StumbleUpon (url, title) -->
+<!--<li class="pure-menu-item">
+  <a href="//www.stumbleupon.com/submit?url={{ .Permalink }}&title={{ .Title }}" target="_blank" class="share-btn stumbleupon">
+    <i class="fa fa-stumbleupon"></i>
+  </a>
+</li>-->
+
+<!-- Email -->
+<li class="pure-menu-item">
+  <a href="mailto:?subject=Check out this post by {{ .Params.author }}&body={{ .Permalink }}" target="_blank" class="share-btn email">
+    <i class="fa fa-envelope"></i>
+  </a>
+</li>
