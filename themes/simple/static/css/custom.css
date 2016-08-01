@@ -10,7 +10,7 @@ html {
 }
 
 body {
-	background-color: rgb(254,254,254);
+	/*background-color: rgb(254,254,254);*/
 	color: #4c4c4c;
 }
 
@@ -25,7 +25,7 @@ body {
 	margin-bottom: .5em;
 }
 
-.header .desktop ul {
+.header ul {
 	float: right;
 	margin-top: 5px;
 }
@@ -138,7 +138,7 @@ body {
 	font-family: proxima-nova,"Helvetica Neue",Helvetica,Roboto,Arial,sans-serif;
 	color:#4c4c4c;
 	letter-spacing:normal;
-	padding-left: 1em;
+	padding-left: .5em;
 }
 
 .post h1,h2,h3,h4,h5,h6 {
@@ -198,7 +198,7 @@ body {
 
 .post-title h1 {
 	font-weight:bold;
-	font-size:39px;
+	font-size:32px;
 	line-height: 40px;
 	margin-top: 0;
 	margin-bottom: 0;
@@ -227,6 +227,12 @@ body {
 	}
 	#toggle-home {
 		display: inline-block;
+	}
+	.nav-menu {
+		text-align: center;
+	}
+	.nav-menu ul.pure-menu-list {
+		display: none;
 	}
 }
 
@@ -282,4 +288,8 @@ body {
 
 .posts {
 	margin-top: 4vh;
+}
+
+.pure-menu-fixed {
+	background: #fff;
 }
