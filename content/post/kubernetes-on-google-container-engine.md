@@ -46,7 +46,7 @@ You should see `my-cluster` (or your own cluster name) on the list and it should
 Next, we need to configure `kubectl` command line access:
 
 ```sh
-gcloud container clusters get-credentials my-cluster --zone us-west1-a
+gcloud container clusters get-credentials my-cluster --zone us-west1-a --project my-project
 ```
 
 Then start a proxy to connect to K8S control plane:
@@ -55,10 +55,10 @@ Then start a proxy to connect to K8S control plane:
 kubectl proxy &
 ```
 
-Now you can access K8S Dashboard in your browser at:
+Now you can access K8S' Dashboard in your browser at:
 
 http://localhost:8001/ui
 
-And access K8S REST API at:
+And K8S' REST API at:
 
 http://localhost:8001/api/v1.
