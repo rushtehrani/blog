@@ -43,7 +43,7 @@ gcloud container clusters list
 
 You should see `my-cluster` (or your own cluster name) on the list and it should have a status `RUNNING`.
 
-Next, we need to configure `kubectl` command line access:
+Next, we need to configure `kubectl` command line access for your new cluster:
 
 ```sh
 gcloud container clusters get-credentials my-cluster --zone us-west1-a --project my-project
