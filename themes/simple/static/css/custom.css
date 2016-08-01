@@ -27,6 +27,7 @@ body {
 
 .header .desktop ul {
 	float: right;
+	margin-top: 5px;
 }
 .header ul li {
 		height: auto;
@@ -43,6 +44,8 @@ body {
 	color: #4c4c4c;
 	font-family: "Open Sans", sans-serif;
 	font-weight: 300;
+	text-transform: none;
+	font-size: 20px;
 }
 
 .pull-right {
@@ -267,9 +270,10 @@ body {
 
 .banner h1 {
 	font-family: "Open Sans", sans-serif;
-	font-weight: 400;
+	font-weight: 300;
 	margin-top: 20vh;
 	margin-bottom: 5px;
+	font-size: 40px;
 }
 
 .banner .pure-menu {
