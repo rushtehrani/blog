@@ -10,48 +10,7 @@
           <a href="{{ $baseurl }}categories/{{ $name | urlize }}" class="pure-menu-link">{{ $name | title }}</a>
         </li>
         {{ end }}
-        {{ if .Site.Author.github }}
-        <li class="pure-menu-item">
-          <a href="https://github.com/{{ .Site.Author.github }}" class="pure-menu-link">
-            <i class="fa fa-github" aria-hidden="true"></i>
-          </a>
-        </li>
-        {{ end }}
-        {{ if .Site.Author.twitter }}
-        <li class="pure-menu-item">
-          <a href="https://twitter.com/{{ .Site.Author.twitter }}" class="pure-menu-link">
-            <i class="fa fa-twitter" aria-hidden="true"></i>
-          </a>
-        </li>
-        {{ end }}
-        {{ if .Site.Author.linkedin }}
-        <li class="pure-menu-item">
-          <a href="https://www.linkedin.com/in/{{ .Site.Author.linkedin }}" class="pure-menu-link">
-            <i class="fa fa-linkedin" aria-hidden="true"></i>
-          </a>
-        </li>
-        {{ end }}
-        {{ if .Site.Author.google }}
-        <li class="pure-menu-item">
-          <a href="https://plus.google.com/+{{ .Site.Author.google }}" class="pure-menu-link">
-            <i class="fa fa-google-plus" aria-hidden="true"></i>
-          </a>
-        </li>
-        {{ end }}
-        {{ if .Site.Author.facebook }}
-        <li class="pure-menu-item">
-          <a href="https://www.facebook.com/{{ .Site.Author.facebook }}" class="pure-menu-link">
-            <i class="fa fa-facebook" aria-hidden="true"></i>
-          </a>
-        </li>
-        {{ end }}
-        {{ if .Site.Author.email }}
-        <li class="pure-menu-item">
-          <a href="mailto:{{ .Site.Author.email }}" class="pure-menu-link">
-            <i class="fa fa-envelope" aria-hidden="true"></i>
-          </a>
-        </li>
-        {{ end }}
+        {{ partial "social-media-links.html" . }}
       </ul>
     </div>
     <div class="mobile pure-menu nav-menu">

@@ -11,7 +11,7 @@ html {
 
 body {
 	background-color: rgb(254,254,254);
-	color: #484848;
+	color: #4c4c4c;
 }
 
 .nav-menu {
@@ -21,7 +21,7 @@ body {
 
 .header {
 	text-align: left;
-	color: #484848;
+	color: #4c4c4c;
 	margin-bottom: .5em;
 }
 
@@ -34,13 +34,13 @@ body {
 
 .header ul li a {
 	font-weight: bold;
-	color: #484848;
+	color: #4c4c4c;
 	font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .header .site-title {
 	font-weight: bold;
-	color: #484848;
+	color: #4c4c4c;
 	font-family: "Open Sans", sans-serif;
 	font-weight: 300;
 }
@@ -60,6 +60,7 @@ body {
 	font-family: verdana,arial,helvetica,sans-serif;
 	list-style-type:none;
 	padding-left: 1em;
+	text-align: center;
 }
 
 .posts li p{
@@ -132,7 +133,7 @@ body {
 
 .post {
 	font-family: proxima-nova,"Helvetica Neue",Helvetica,Roboto,Arial,sans-serif;
-	color:#484848;
+	color:#4c4c4c;
 	letter-spacing:normal;
 	padding-left: 1em;
 }
@@ -213,7 +214,7 @@ body {
 		float: right;
 		padding: .3em;
 		text-decoration: none;
-		color: #484848;
+		color: #4c4c4c;
 		font-weight: bold;
 	}
 	#toggle-content li {
@@ -250,4 +251,31 @@ body {
 
 #share-menu li a {
 	color: #555;
+}
+
+.pure-menu-link, .pure-menu-disabled, .pure-menu-heading {
+	padding: .5em;
+}
+
+.pure-menu-link {
+	color: #4c4c4c;
+}
+
+.banner {
+	text-align: center;
+}
+
+.banner h1 {
+	font-family: "Open Sans", sans-serif;
+	font-weight: 400;
+	margin-top: 20vh;
+	margin-bottom: 5px;
+}
+
+.banner .pure-menu {
+	height: 32px;
+}
+
+.posts {
+	margin-top: 4vh;
 }
