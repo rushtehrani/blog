@@ -1,4 +1,4 @@
-baseurl = "http://www.rushtehrani.com.s3-website-us-west-2.amazonaws.com/"
+baseurl = "https://rushtehrani.com/"
 languageCode = "en-us"
 title="Rush Tehrani"
 theme="simple"
