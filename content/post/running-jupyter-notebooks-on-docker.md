@@ -5,7 +5,7 @@ title = "Running Jupyter Notebooks on Docker"
 tags = ["jupyter", "ipython", "docker"]
 +++
 
-A simple and quick way to get a <a href="https://github.com/jupyter/notebook" target="blank">Jupyter notebooks</a> up and running quickly is to run them on <a href="https://www.docker.com/" target="blank">Docker</a>.
+A simple and quick way to get <a href="https://github.com/jupyter/notebook" target="blank">Jupyter notebooks</a> up and running quickly is to run them on <a href="https://www.docker.com/" target="blank">Docker</a>.
 
 If you don’t already have Docker installed, take a look at the <a href="https://docs.docker.com/engine/installation/" target="blank">installation guide</a> for your platform.
 
