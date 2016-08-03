@@ -22,7 +22,7 @@ We’ll be using `kubectl` to get information about our K8S cluster and set up a
 Next thing we need to do is to spin up our one node K8S cluster:
 
 ```sh  
-gcloud container --project "my-project" clusters create "my-cluster" --zone "us-west1-a" --machine-type "g1-small" --num-nodes "1"
+gcloud container --project "my-project" clusters create "my-cluster" --zone "us-west1-a" --machine-type "f1-micro" --num-nodes "3" --disk-size "20" --username "admin" --password "password"
 ```
 
 Where:
@@ -30,8 +30,11 @@ Where:
 - `--project "my-project"` is the name of the project you created above.
 - `"my-cluster"` is the name of your cluster
 - `--zone "us-west1-a"` is your cluster’s zone, see <a href="https://cloud.google.com/compute/docs/regions-zones/regions-zones" target="blank">Regions and Zones</a> for more information.
-- `--machine-type "g1-small"` is the machine type, see <a href="https://cloud.google.com/compute/docs/machine-types" target="blank">Machine Types</a> for more information.
-- `--num-nodes "1"` is the number of nodes to allocate for this cluster.
+- `--machine-type "f1-micro"` is the machine type, see <a href="https://cloud.google.com/compute/docs/machine-types" target="blank">Machine Types</a> for more information.
+- `--num-nodes "3"` is the number of nodes to allocate for this cluster. Defaults to `"3"`.
+- `--disk-size "20"` is the size of disk per node in GB.  Defaults to `"100"`.
+- `--username "admin"` is the username to use for cluster auth. Defaults to `"admin"`.
+- `--password "password"` is the password to use for cluster auth.  Defaults to a randomly-generated string.
 
 Alternatively, you can <a href="https://console.cloud.google.com/kubernetes/add" target="blank">add your cluster</a> in the Google Container Engine console.
 
