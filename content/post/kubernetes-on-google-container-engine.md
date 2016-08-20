@@ -5,21 +5,21 @@ title = "Kubernetes on Google Container Engine"
 tags = ["kubernetes", "google container engine", "docker"]
 +++
 
-This is a quick walkthrough to show you how to spin up a very small Kubernetes (K8S) cluster on Google Cloud Platform (GCE) and then get access to the K8S REST API.
+This is a quick walkthrough to show you how to spin up a very small Kubernetes cluster on Google Cloud Platform (GCE) and then get access to the Kubernetes REST API.
 
 Before you get started, you need to sign-in to <a href="https://console.cloud.google.com" target="blank">Google Cloud Platform console</a> and create a new project. If you don’t already have a Google Account, you can <a href="https://accounts.google.com/SignUp" target="blank">create one</a>.
 
 First, you need to download GCE’s command line interface `gcloud`. The easiest way to install and initialize `gcloud` is via the <a href="https://cloud.google.com/sdk/docs/quickstarts" target="blank">Quickstarts</a>. You can stop after the Initialize SDK section and continue with the instructions in this post.
 
-Once you are done initializing `gcloud`, you can then use it to install K8S command line interface `kubectl`:
+Once you are done initializing `gcloud`, you can then use it to install Kubernetes command line interface `kubectl`:
 
 ```sh  
 gcloud components install kubectl
 ```
 
-We’ll be using `kubectl` to get information about our K8S cluster and set up a proxy to our K8S API.
+We’ll be using `kubectl` to get information about our Kubernetes cluster and set up a proxy to our Kubernetes API.
 
-Next thing we need to do is to spin up our one node K8S cluster:
+Next thing we need to do is to spin up our one node Kubernetes cluster:
 
 ```sh  
 gcloud container --project "my-project" clusters create "my-cluster" --zone "us-west1-a" --machine-type "f1-micro" --num-nodes "3" --disk-size "20" --username "admin" --password "password"
@@ -52,16 +52,16 @@ Next, we need to configure `kubectl` command line access for your new cluster:
 gcloud container clusters get-credentials my-cluster --zone us-west1-a --project my-project
 ```
 
-Then start a proxy to connect to K8S control plane:
+Then start a proxy to connect to Kubernetes control plane:
 
 ```sh
 kubectl proxy &
 ```
 
-Now you can access K8S' Dashboard in your browser at:
+Now you can access Kubernetes' Dashboard in your browser at:
 
 http://localhost:8001/ui
 
-And K8S' REST API at:
+And Kubernetes' REST API at:
 
 http://localhost:8001/api/v1.
