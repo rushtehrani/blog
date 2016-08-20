@@ -4,6 +4,7 @@ title = "Rush Tehrani"
 theme = "simple"
 
 enableRobotsTXT = true
+disqusShortname = "rushtehrani"
 
 [params]
     highlight = "github"

@@ -28,7 +28,7 @@ import (
 )
 ```
 
-Now that we have our packages, let's use the API to run a Jupyter notebook Docker container on Kubernetes.
+Now that we have our packages, let's use the API to run a Docker container running a Jupyter notebook server.
 
 First we need to create the [pod](http://kubernetes.io/docs/user-guide/pods/#what-is-a-pod):
 
