@@ -1,10 +1,12 @@
 baseurl = "https://www.rushtehrani.com/"
 languageCode = "en-us"
-title="Rush Tehrani"
-theme="simple"
+title = "Rush Tehrani"
+theme = "simple"
+
+enableRobotsTXT = true
 
 [params]
-    highlight="github"
+    highlight = "github"
 
 [author]
     email = "hello@rushtehrani.com"
@@ -15,3 +17,6 @@ theme="simple"
     google = "RushTehrani"
     gaID = "UA-54533300-1"
     twitter = "rushtehrani"
+
+[blackfriday]
+  hrefTargetBlank = true

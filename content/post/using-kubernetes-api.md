@@ -1,11 +1,11 @@
 +++
 date = "2016-08-19T07:32:52-07:00"
 tags = ["kubernetes", "google container engine", "docker"]
-title = "Consuming Kubernetes API"
-
+title = "Using Kubernetes API"
+draft = true
 +++
 
-As a continuation to the [previous post](kubernetes-on-google-container-engine), we will now look at consuming the Kubernetes API using its [Go SDK](https://github.com/kubernetes/kubernetes/tree/master/pkg/client/unversioned).
+As a continuation to the [previous post](/post/kubernetes-on-google-container-engine), we will now look at consuming the Kubernetes API using its [Go SDK](https://github.com/kubernetes/kubernetes/tree/master/pkg/client/unversioned).
 
 First we need to `go get` the following packages:
 
@@ -28,7 +28,9 @@ import (
 )
 ```
 
-Now that we have our packages, let's use them to create a pod:
+Now that we have our packages, let's use the API to run a Jupyter notebook Docker container on Kubernetes.
+
+First we need to create the [pod](http://kubernetes.io/docs/user-guide/pods/#what-is-a-pod):
 
 ```Go
 func main() {
@@ -75,9 +77,6 @@ fmt.Println(pod.GetCreationTimestamp())
 Full source code:
 
 ```Go
-// go get -u k8s.io/kubernetes/pkg/api
-// go get -u k8s.io/kubernetes/pkg/client/unversioned
-
 package main
 
 import (
@@ -124,17 +123,11 @@ func main() {
 		return
 	}
 
-	// Get Pod by name
-	pod, err = c.Pods(api.NamespaceDefault).Get("my-pod")
+	// Verify that pod is create and get its creation time
+	fmt.Println("Pod created at:" + pod.GetCreationTimestamp())
 
-	if err != nil {
-		fmt.Println(err)
-		return
-	}
 
-	fmt.Println(pod.GetCreationTimestamp())
-
-	// Set Pod label and update Pod
+	// Set pod label so that we can expose it in a service
 	pod.SetLabels(map[string]string{
 		"pod-group": "my-pod-group",
 	})

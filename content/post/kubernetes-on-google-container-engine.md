@@ -7,9 +7,9 @@ tags = ["kubernetes", "google container engine", "docker"]
 
 This is a quick walkthrough to show you how to spin up a very small Kubernetes cluster on Google Cloud Platform (GCE) and then get access to the Kubernetes REST API.
 
-Before you get started, you need to sign-in to <a href="https://console.cloud.google.com" target="blank">Google Cloud Platform console</a> and create a new project. If you don’t already have a Google Account, you can <a href="https://accounts.google.com/SignUp" target="blank">create one</a>.
+Before you get started, you need to sign-in to [Google Cloud Platform console](https://console.cloud.google.com) and create a new project. If you don’t already have a Google Account, you can [create one](https://accounts.google.com/SignUp).
 
-First, you need to download GCE’s command line interface `gcloud`. The easiest way to install and initialize `gcloud` is via the <a href="https://cloud.google.com/sdk/docs/quickstarts" target="blank">Quickstarts</a>. You can stop after the Initialize SDK section and continue with the instructions in this post.
+First, you need to download GCE’s command line interface `gcloud`. The easiest way to install and initialize `gcloud` is via the [Quickstarts](https://cloud.google.com/sdk/docs/quickstarts). You can stop after the *Initialize the SDK* section and continue with the instructions in this post.
 
 Once you are done initializing `gcloud`, you can then use it to install Kubernetes command line interface `kubectl`:
 
@@ -29,14 +29,14 @@ Where:
 
 - `--project "my-project"` is the name of the project you created above.
 - `"my-cluster"` is the name of your cluster
-- `--zone "us-west1-a"` is your cluster’s zone, see <a href="https://cloud.google.com/compute/docs/regions-zones/regions-zones" target="blank">Regions and Zones</a> for more information.
-- `--machine-type "f1-micro"` is the machine type, see <a href="https://cloud.google.com/compute/docs/machine-types" target="blank">Machine Types</a> for more information.
+- `--zone "us-west1-a"` is your cluster’s zone, see [Regions and Zones](https://cloud.google.com/compute/docs/regions-zones/regions-zones) for more information.
+- `--machine-type "f1-micro"` is the machine type, see [Machine Types](https://cloud.google.com/compute/docs/machine-types) for more information.
 - `--num-nodes "3"` is the number of nodes to allocate for this cluster. Defaults to `"3"`.
 - `--disk-size "20"` is the size of disk per node in GB.  Defaults to `"100"`.
 - `--username "admin"` is the username to use for cluster auth. Defaults to `"admin"`.
 - `--password "password"` is the password to use for cluster auth.  Defaults to a randomly-generated string.
 
-Alternatively, you can <a href="https://console.cloud.google.com/kubernetes/add" target="blank">add your cluster</a> in the Google Container Engine console.
+Alternatively, you can [add your cluster](https://console.cloud.google.com/kubernetes/add) in the Google Container Engine console.
 
 After a few minutes, our cluster should be up and running. To verify that it’s running, first get a list of your running clusters:
 
