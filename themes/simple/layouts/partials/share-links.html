@@ -5,49 +5,49 @@
 
 <!-- Twitter -->
 <li class="pure-menu-item">
-  <a href="//twitter.com/share?url={{ .Permalink }}&text={{ .Title }}&via={{ .Site.Social.twitter }}" target="_blank" class="share-btn twitter">
+  <a href="//twitter.com/share?url={{ .Permalink }}&text={{ .Title }}" target="_blank" class="share-btn twitter" title="Twitter">
     <i class="fa fa-twitter"></i>
+  </a>
+</li>
+
+<!-- Hacker News (url, title) -->
+<li class="pure-menu-item">
+  <a href="//news.ycombinator.com/submitlink?u={{ .Permalink }}&t={{ .Title }}" target="_blank" class="share-btn hacker-news" title="Hacker News">
+    <i class="fa fa-hacker-news"></i>
+  </a>
+</li>
+
+<!-- Reddit (url, title) -->
+<li class="pure-menu-item">
+  <a href="//reddit.com/submit?url={{ .Permalink }}&title={{ .Title }}" target="_blank" class="share-btn reddit" title="Reddit">
+    <i class="fa fa-reddit-alien"></i>
   </a>
 </li>
 
 <!-- LinkedIn -->
 <li class="pure-menu-item">
-  <a href="//www.linkedin.com/shareArticle?url={{ .Permalink }}&title={{ .Title }}" target="_blank" class="share-btn linkedin">
+  <a href="//www.linkedin.com/shareArticle?url={{ .Permalink }}&title={{ .Title }}" target="_blank" class="share-btn linkedin" title="LinkedIn">
     <i class="fa fa-linkedin"></i>
   </a>
 </li>
 
 <!-- Google Plus -->
 <li class="pure-menu-item">
-  <a href="//plus.google.com/share?url={{ .Permalink }}" target="_blank" class="share-btn google-plus">
+  <a href="//plus.google.com/share?url={{ .Permalink }}" target="_blank" class="share-btn google-plus" title="Google+">
     <i class="fa fa-google-plus"></i>
   </a>
 </li>
 
 <!-- Facebook -->
 <li class="pure-menu-item">
-  <a href="//www.facebook.com/sharer/sharer.php?u={{ .Permalink }}" target="_blank" class="share-btn facebook">
+  <a href="//www.facebook.com/sharer/sharer.php?u={{ .Permalink }}" target="_blank" class="share-btn facebook" title="Facebook">
     <i class="fa fa-facebook"></i>
   </a>
 </li>
 
-<!-- Reddit (url, title) -->
-<li class="pure-menu-item">
-  <a href="//reddit.com/submit?url={{ .Permalink }}&title={{ .Title }}" target="_blank" class="share-btn reddit">
-    <i class="fa fa-reddit-alien"></i>
-  </a>
-</li>
-
-<!-- StumbleUpon (url, title) -->
-<!--<li class="pure-menu-item">
-  <a href="//www.stumbleupon.com/submit?url={{ .Permalink }}&title={{ .Title }}" target="_blank" class="share-btn stumbleupon">
-    <i class="fa fa-stumbleupon"></i>
-  </a>
-</li>-->
-
 <!-- Email -->
 <li class="pure-menu-item">
-  <a href="mailto:?subject=Check out this post by {{ .Params.author }}&body={{ .Permalink }}" target="_blank" class="share-btn email">
+  <a href="mailto:?subject=Check out this post by {{ .Params.author }}&body={{ .Permalink }}" target="_blank" class="share-btn email" title="Email">
     <i class="fa fa-envelope"></i>
   </a>
 </li>
