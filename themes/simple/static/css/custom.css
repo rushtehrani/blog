@@ -296,3 +296,12 @@ body {
 .pure-menu-fixed {
 	background: #fff;
 }
+
+a[target="_blank"]:not(.share-btn):after {
+    font-family: 'FontAwesome';
+    content: " \f08e";
+		font-size: 11px;
+		color: #afafaf;
+		display: inline-block;
+		margin-left: 3px;
+}
