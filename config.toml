@@ -18,6 +18,7 @@ disqusShortname = "rushtehrani"
     google = "RushTehrani"
     gaID = "UA-54533300-1"
     twitter = "rushtehrani"
+    domain = "rushtehrani.com"
 
 [blackfriday]
   hrefTargetBlank = true

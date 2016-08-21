@@ -5,16 +5,34 @@
   <!-- Basic Page Needs –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <meta charset="utf-8">
   <title>{{ .Title }}</title>
-  <meta property="og:title" content="{{ .Title }}">
   <meta name="keywords" content="{{ delimit .Keywords ", " }}">
   <meta name="description" content="{{ .Description }}">
   <meta name="author" content="{{ .Site.Author.name }}">
+
+  <!-- Open Graph  –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta property="og:title" content="{{ .Title }}">
+  <meta property="og:description" content="{{ .Description }}">
+  <meta property="og:image" content="{{ .Site.BaseURL }}img/site.png">
+
+  <!-- Twitter Cards –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="{{ .Title }}">
+  <meta name="twitter:description" content="{{ .Description }}">
+  <meta name="twitter:site" content="@{{ .Site.Author.twitter }}">
+  <meta name="twitter:domain" content="{{ .Site.Author.domain }}">
 
   <!-- Mobile Specific Metas –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Google Verification Meta –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <meta name="google-site-verification" content="DvxBatCUdRw2Jl49bazX9VLG9UYInp8zxyOP6AuBCmE" />
+
+  <!-- Favicons –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 
   <!-- FONT –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
