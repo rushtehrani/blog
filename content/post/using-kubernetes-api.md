@@ -1,7 +1,7 @@
 +++
 date = "2016-08-20T17:30:00-07:00"
 tags = ["kubernetes", "google container engine", "docker", "jupyter"]
-title = "Using Kubernetes API to Launch a Jupyter Notebook"
+title = "Using Kubernetes API Go SDK to Launch a Jupyter Notebook"
 description = "Quick how-to on using Kubernetes Go SDK to access its API and create a Jupyter notebook"
 keywords = ["kubernetes", "go", "golang", "docker", "jupyter", "containers"]
 +++
