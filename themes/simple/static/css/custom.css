@@ -53,10 +53,9 @@ body {
 }
 
 .posts-name {
-	font-weight: bold;
-	padding-left: 1em;
-	margin-top: 1em;
-	font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-weight: 300;
+	text-align: center;
+	font-size: 32px;
 }
 
 .posts {
