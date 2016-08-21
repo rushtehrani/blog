@@ -3,6 +3,8 @@ date = "2016-07-30T09:21:30-07:00"
 draft = false
 title = "Kubernetes on Google Container Engine"
 tags = ["kubernetes", "google container engine", "docker"]
+description = "Kubernetes on Google Container Engine"
+keywords = ["kubernetes", "docker", "google container engine", "containers"]
 +++
 
 This is a quick walkthrough to show you how to spin up a very small Kubernetes cluster on Google Cloud Platform (GCE) and then get access to the Kubernetes REST API.

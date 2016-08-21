@@ -7,7 +7,7 @@ enableRobotsTXT = true
 disqusShortname = "rushtehrani"
 
 [params]
-    highlight = "github"
+    highlight = "atom-one-dark"
 
 [author]
     email = "hello@rushtehrani.com"
