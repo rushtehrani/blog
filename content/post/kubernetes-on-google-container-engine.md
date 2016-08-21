@@ -3,7 +3,7 @@ date = "2016-07-30T09:21:30-07:00"
 draft = false
 title = "Kubernetes on Google Container Engine"
 tags = ["kubernetes", "google container engine", "docker"]
-description = "Kubernetes on Google Container Engine"
+description = "Launch Kubernetes on Google Container Engine and configure it for API access."
 keywords = ["kubernetes", "docker", "google container engine", "containers"]
 +++
 

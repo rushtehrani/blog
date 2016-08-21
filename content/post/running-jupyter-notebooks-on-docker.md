@@ -3,7 +3,7 @@ date = "2015-08-01T14:16:49-07:00"
 draft = false
 title = "Running Jupyter Notebooks on Docker"
 tags = ["jupyter", "ipython", "docker"]
-description = "Running Jupyter Notebooks on Docker"
+description = "A simple and quick way to get Jupyter notebooks up and running quickly is to run them on Docker."
 keywords = ["docker", "jupyter", "containers"]
 +++
 
