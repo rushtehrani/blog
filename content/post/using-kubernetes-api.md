@@ -67,7 +67,7 @@ pod, err := c.Pods(api.NamespaceDefault).Create(&api.Pod{
 
 Note that `Pods` [aren't durable](http://kubernetes.io/docs/user-guide/pods/#durability-of-pods-or-lack-thereof), so if you want your `Pod` to survive node failures and maintenance, you would need to create a [replication controller](http://kubernetes.io/docs/user-guide/replication-controller/#what-is-a-replication-controller).
 
-If we want to make our Pod publicly accessible, we can do so via a Kubernetes [Service](http://kubernetes.io/docs/user-guide/services/).  Since `Services` use label selectors to target Pods, we need to first update our Pod to include a label:
+If we want to make our Pod publicly accessible, we can do so via a Kubernetes [Service](http://kubernetes.io/docs/user-guide/services/).  Since `Services` use label selectors to target Pods, we'd first need update our `Pod` to include a label:
 
 ```Go
 // Set Pod label so that we can expose it in a service
