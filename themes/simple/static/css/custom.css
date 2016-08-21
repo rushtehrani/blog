@@ -61,7 +61,7 @@ body {
 .posts {
 	font-family: verdana,arial,helvetica,sans-serif;
 	list-style-type:none;
-	padding-left: 1em;
+	padding: 0 0.1em;
 	text-align: center;
 }
 
@@ -137,7 +137,6 @@ body {
 	font-family: proxima-nova,"Helvetica Neue",Helvetica,Roboto,Arial,sans-serif;
 	color:#4c4c4c;
 	letter-spacing:normal;
-	padding-left: .5em;
 }
 
 .post h1,h2,h3,h4,h5,h6 {
@@ -264,6 +263,10 @@ body {
 
 .pure-menu-link, .pure-menu-disabled, .pure-menu-heading {
 	padding: .5em;
+}
+
+.pure-menu-heading {
+	padding: .5em 0;
 }
 
 .pure-menu-link {
