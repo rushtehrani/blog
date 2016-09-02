@@ -1,14 +1,14 @@
 +++
 date = "2016-08-20T17:30:00-07:00"
 tags = ["kubernetes", "google container engine", "docker", "jupyter"]
-title = "Using Kubernetes API Go SDK to Launch a Jupyter Notebook"
-description = "Quick how-to on using Kubernetes Go SDK to access its API and Launch a Jupyter notebook."
+title = "Using Kubernetes Go Client to Launch a Jupyter Notebook"
+description = "Quick how-to on using Kubernetes Go client to access its API and Launch a Jupyter notebook."
 keywords = ["kubernetes", "go", "golang", "docker", "jupyter", "containers"]
 +++
 
-As a continuation to the [previous post](/post/kubernetes-on-google-container-engine), we will now look at consuming the Kubernetes API to create a simple pod and service to expose a Docker container running a Jupyter notebook server.
+As a continuation to the [previous post](/post/kubernetes-on-google-container-engine), we will now look at using Kubernetes' API to create a simple [Pod](http://kubernetes.io/docs/user-guide/pods/#what-is-a-pod) and [Service](http://kubernetes.io/docs/user-guide/services/) to expose a Docker container running a Jupyter notebook server.
 
-We will be using Kubernetes' [Go SDK](https://github.com/kubernetes/kubernetes/tree/master/pkg/client/unversioned), so let's get started by getting the following packages:
+We will be using Kubernetes' [Go client](https://github.com/kubernetes/kubernetes/tree/master/pkg/client/unversioned), so let's get started by getting the following packages:
 
 ```bash
 go get -u k8s.io/kubernetes/pkg/api
@@ -41,7 +41,7 @@ c, err := client.New(&restclient.Config{
 })
 ```
 
-Next, we need to create a Kubernetes [Pod](http://kubernetes.io/docs/user-guide/pods/#what-is-a-pod) that'll contain our Jupyter notebook container:
+Next, we need to create a Kubernetes `Pod` that'll contain our Jupyter notebook container:
 
 ```Go
 // Create a Pod named "my-pod"
@@ -67,7 +67,7 @@ pod, err := c.Pods(api.NamespaceDefault).Create(&api.Pod{
 
 Note that `Pods` [aren't durable](http://kubernetes.io/docs/user-guide/pods/#durability-of-pods-or-lack-thereof), so if you want your `Pod` to survive node failures and maintenance, you would need to create a [replication controller](http://kubernetes.io/docs/user-guide/replication-controller/#what-is-a-replication-controller).
 
-If we want to make our `Pod` publicly accessible, we can do so via a Kubernetes [Service](http://kubernetes.io/docs/user-guide/services/).  Since `Services` use label selectors to target `Pods`, we'd first need update our `Pod` to include a label:
+If we want to make our `Pod` publicly accessible, we can do so via a Kubernetes `Service`.  Since `Services` use label selectors to target `Pods`, we'd first need to update our `Pod` to include a label:
 
 ```Go
 // Set Pod label so that we can expose it in a service
