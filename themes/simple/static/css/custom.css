@@ -305,3 +305,19 @@ a[target="_blank"]:not(.share-btn):after {
 		display: inline-block;
 		margin-left: 3px;
 }
+
+code {
+	font-family: 'Inconsolata', monospace;
+	background-color: #f7f7f7;
+	padding: 0 2px;
+}
+
+.hljs {
+	font-family: 'Inconsolata', monospace;
+	border: 1px solid #f0f0f0;
+	background-color: #f7f7f7;
+}
+
+.hljs-string {
+	color: #183691;
+}

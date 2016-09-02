@@ -7,7 +7,7 @@ enableRobotsTXT = true
 disqusShortname = "rushtehrani"
 
 [params]
-    highlight = "github"
+    highlight = "github-gist"
 
 [author]
     email = "hello@rushtehrani.com"
