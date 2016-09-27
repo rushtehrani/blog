@@ -1,0 +1,27 @@
++++
+date = "2016-09-24T10:48:58-07:00"
+draft = true
+tags = ["ethereum", "block chain", "cryptocurrency"]
+title = "Calling Ethereum's API from Your App"
+
++++
+
+First, we'd need to [install](https://github.com/ethereum/go-ethereum/wiki/Building-Ethereum) Ethereum.
+
+Once Ethereum is installed, we can start its [JSON RPC API](https://github.com/ethereum/wiki/wiki/JSON-RPC):
+
+```sh
+geth --rpc
+```
+
+This will by default expose the RPC API on http://localhost:8545, to change the defaults:
+
+```sh
+geth --rpc --rpcaddr <ip> --rpcport <port>
+```
+
+Note that we can also start the RPC API in the `geth` console using the `admin` object:
+
+```JavaScript
+admin.startRPC('<ip>', '<port>');
+```
