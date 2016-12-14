@@ -1,21 +1,22 @@
 +++
-date = "2016-08-20T17:30:00-07:00"
+date = "2016-12-14T19:15:00-08:00"
 tags = ["kubernetes", "google container engine", "docker", "jupyter"]
 title = "Using Kubernetes Go Client to Launch a Jupyter Notebook"
 description = "Quick how-to on using Kubernetes Go client to access its API and Launch a Jupyter notebook."
 keywords = ["kubernetes", "go", "golang", "docker", "jupyter", "containers"]
 +++
 
+Note: This post was updated to use the latest stable Kubernetes Go client as of 12/14/2016.
+
 As a continuation to the [previous post](/post/kubernetes-on-google-container-engine), we will now look at using Kubernetes' API to create a simple [Pod](http://kubernetes.io/docs/user-guide/pods/#what-is-a-pod) and [Service](http://kubernetes.io/docs/user-guide/services/) to expose a Docker container running a Jupyter notebook server.
 
-We will be using Kubernetes' [Go client](https://github.com/kubernetes/kubernetes/tree/master/pkg/client/unversioned), so let's get started by getting the following packages:
+We will be using Kubernetes' [Go client](https://github.com/kubernetes/kubernetes/tree/master/pkg/client/unversioned), so let's get started by getting the package:
 
 ```bash
-go get -u k8s.io/kubernetes/pkg/api
-go get -u k8s.io/kubernetes/pkg/client/unversioned
+go get -u k8s.io/client-go/
 ```
 
-Once the packages download, we need to import them in our `main.go` file:
+Once the package downloads, we need to add the relevant import paths in our `main.go` file:
 
 ```Go
 package main
@@ -23,9 +24,9 @@ package main
 import (
 	"fmt"
 
-	"k8s.io/kubernetes/pkg/api"
-	"k8s.io/kubernetes/pkg/client/restclient"
-	client "k8s.io/kubernetes/pkg/client/unversioned"
+	"k8s.io/client-go/1.5/kubernetes"
+	"k8s.io/client-go/1.5/pkg/api/v1"
+	"k8s.io/client-go/1.5/tools/clientcmd"
 )
 
 func main()  {
@@ -33,28 +34,37 @@ func main()  {
 }
 ```
 
-We will then instantiate the client, using the `kubectl` proxy URL we configured previously:
+We will then instantiate the client using an existing Kubernetes config path.  In most cases, the path will most likely be `$HOME/.kube/config`.
 
 ```Go
-c, err := client.New(&restclient.Config{
-	Host: "http://localhost:8001",
-})
+kubeconfig := flag.String("kubeconfig", <kube-config-path>, "kubeconfig path")
+flag.Parse()
+
+config, err := clientcmd.BuildConfigFromFlags("", *kubeconfig)
+if err != nil {
+	return nil, err
+}
+
+c, err := kubernetes.NewForConfig(config)
+if err != nil {
+	return nil, err
+}
 ```
 
-Next, we need to create a Kubernetes `Pod` that'll contain our Jupyter notebook container:
+Next, let's create a Kubernetes `Pod` that'll contain our Jupyter notebook container:
 
 ```Go
 // Create a Pod named "my-pod"
-pod, err := c.Pods(api.NamespaceDefault).Create(&api.Pod{
-	ObjectMeta: api.ObjectMeta{
+pod, err := c.Pods(v1.NamespaceDefault).Create(&v1.Pod{
+	ObjectMeta: v1.ObjectMeta{
 		Name: "my-pod",
 	},
-	Spec: api.PodSpec{
-		Containers: []api.Container{
+	Spec: v1.PodSpec{
+		Containers: []v1.Container{
 			{
         Name:  "jupyter-notebook",
         Image: "jupyter/minimal-notebook",
-				Ports: []api.ContainerPort{
+				Ports: []v1.ContainerPort{
 					{
 						ContainerPort: 8888,
 					},
@@ -65,9 +75,9 @@ pod, err := c.Pods(api.NamespaceDefault).Create(&api.Pod{
 })
 ```
 
-Note that `Pods` [aren't durable](http://kubernetes.io/docs/user-guide/pods/#durability-of-pods-or-lack-thereof), so if you want your `Pod` to survive node failures and maintenance, you would need to create a [replication controller](http://kubernetes.io/docs/user-guide/replication-controller/#what-is-a-replication-controller).
+Note that `Pods` [aren't durable](http://kubernetes.io/docs/user-guide/pods/#durability-of-pods-or-lack-thereof), so if you want your `Pod` to survive node failures and maintenance, you would need to create a [replication controller](http://kubernetes.io/docs/user-guide/replication-controller/#what-is-a-replication-controller) or a [Deployment](http://kubernetes.io/docs/user-guide/deployments/).
 
-If we want to make our `Pod` publicly accessible, we can do so via a Kubernetes `Service`.  Since `Services` use label selectors to target `Pods`, we'd first need to update our `Pod` to include a label:
+We can also make our `Pods` publicly accessible via [Services](http://kubernetes.io/docs/user-guide/services/).  Since `Services` use label selectors to target `Pods`, we'd first need to update our `Pod` to include a label:
 
 ```Go
 // Set Pod label so that we can expose it in a service
@@ -76,21 +86,21 @@ pod.SetLabels(map[string]string{
 })
 
 // Update Pod to include the labels
-pod, err = c.Pods(api.NamespaceDefault).Update(pod)
+pod, err = c.Pods(v1.NamespaceDefault).Update(pod)
 ```
 
 Then we can create a [Node Port](http://kubernetes.io/docs/user-guide/services/#type-nodeport) type `Service` that targets this `Pod` via the API:
 
 ```Go
 // Create a Service named "my-service" that targets "pod-group":"my-pod-group"  
-svc, err := c.Services(api.NamespaceDefault).Create(&api.Service{
-	ObjectMeta: api.ObjectMeta{
+svc, err := c.Services(v1.NamespaceDefault).Create(&v1.Service{
+	ObjectMeta: v1.ObjectMeta{
 		Name: "my-service",
 	},
-	Spec: api.ServiceSpec{
-		Type:     api.ServiceTypeNodePort,
+	Spec: v1.ServiceSpec{
+		Type:     v1.ServiceTypeNodePort,
 		Selector: pod.Labels,
-		Ports: []api.ServicePort{
+		Ports: []v1.ServicePort{
 			{
 				Port: 8888,
 			},
