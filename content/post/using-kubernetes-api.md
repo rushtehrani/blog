@@ -1,5 +1,5 @@
 +++
-date = "2016-12-14T19:15:00-08:00"
+date = "2016-12-14T12:00:00-08:00"
 tags = ["kubernetes", "google container engine", "docker", "jupyter"]
 title = "Using Kubernetes Go Client to Launch a Jupyter Notebook"
 description = "Quick how-to on using Kubernetes Go client to access its API and Launch a Jupyter notebook."
