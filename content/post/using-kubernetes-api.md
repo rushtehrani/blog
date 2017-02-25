@@ -27,6 +27,7 @@ import (
 	"k8s.io/client-go/1.5/kubernetes"
 	"k8s.io/client-go/1.5/pkg/api/v1"
 	"k8s.io/client-go/1.5/tools/clientcmd"
+	"k8s.io/client-go/1.5/rest"
 )
 
 func main()  {
@@ -34,13 +35,24 @@ func main()  {
 }
 ```
 
-We will then instantiate the client using an existing Kubernetes config path.  In most cases, the path would be `$HOME/.kube/config`.
+If outside of the cluster, then we will need to instantiate the client using an existing Kubernetes config path.  In most cases, the path would be `$HOME/.kube/config`.
 
 ```Go
-kubeconfig := flag.String("kubeconfig", <kube-config-path>, "kubeconfig path")
-flag.Parse()
+config, err := clientcmd.BuildConfigFromFlags("", "<kube-config-path>")
+if err != nil {
+	return nil, err
+}
 
-config, err := clientcmd.BuildConfigFromFlags("", *kubeconfig)
+c, err := kubernetes.NewForConfig(config)
+if err != nil {
+	return nil, err
+}
+```
+
+If inside the cluster, we can instantiate the client this way instead:
+
+```Go
+config, err := rest.InClusterConfig()
 if err != nil {
 	return nil, err
 }
@@ -92,7 +104,7 @@ pod, err = c.Pods(v1.NamespaceDefault).Update(pod)
 Then we can create a [Node Port](http://kubernetes.io/docs/user-guide/services/#type-nodeport) type `Service` that targets this `Pod` via the API:
 
 ```Go
-// Create a Service named "my-service" that targets "pod-group":"my-pod-group"  
+// Create a Service named "my-service" that targets "pod-group":"my-pod-group"
 svc, err := c.Services(v1.NamespaceDefault).Create(&v1.Service{
 	ObjectMeta: v1.ObjectMeta{
 		Name: "my-service",
