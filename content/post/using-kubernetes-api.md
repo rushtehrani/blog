@@ -8,7 +8,7 @@ keywords = ["kubernetes", "go", "golang", "docker", "jupyter", "containers"]
 
 Note: This post was updated to use the latest stable Kubernetes Go client as of 12/14/2016.
 
-As a continuation to the [previous post](/post/kubernetes-on-google-container-engine), we will now look at using Kubernetes' API to create a simple [Pod](http://kubernetes.io/docs/user-guide/pods/#what-is-a-pod) and [Service](http://kubernetes.io/docs/user-guide/services/) to expose a Docker container running a Jupyter notebook server.
+As a continuation to the [previous post](/post/kubernetes-on-google-container-engine), let's now look at using Kubernetes' API to create a simple [Pod](http://kubernetes.io/docs/user-guide/pods/#what-is-a-pod) and [Service](http://kubernetes.io/docs/user-guide/services/) to expose a Docker container running a Jupyter notebook server.
 
 We will be using Kubernetes' [Go client](https://github.com/kubernetes/client-go), so let's get started by getting the package:
 
