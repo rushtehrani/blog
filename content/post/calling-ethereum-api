@@ -20,7 +20,7 @@ This will by default expose the RPC API on http://localhost:8545, to change the 
 geth --rpc --rpcaddr <ip> --rpcport <port>
 ```
 
-Note that we can also start the RPC API in the `geth` console using the `admin` object:
+Note that we can also start the RPC API in `geth` console:
 
 ```JavaScript
 admin.startRPC('<ip>', '<port>');

@@ -5,13 +5,25 @@
   <!-- Basic Page Needs –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <meta charset="utf-8">
   <title>{{ .Title }}</title>
+  {{ if .Keywords }}
   <meta name="keywords" content="{{ delimit .Keywords ", " }}">
+  {{ else }}
+  <meta name="keywords" content="{{ delimit .Site.Params.Keywords ", " }}">
+  {{ end }}
+  {{ if .Description }}
   <meta name="description" content="{{ .Description }}">
+  {{ else }}
+  <meta name="description" content="{{ .Site.Params.Description }}">
+  {{ end }}
   <meta name="author" content="{{ .Site.Author.name }}">
 
   <!-- Open Graph  –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <meta property="og:title" content="{{ .Title }}">
+  {{ if .Description }}
   <meta property="og:description" content="{{ .Description }}">
+  {{ else }}
+  <meta property="og:description" content="{{ .Site.Params.Description }}">
+  {{ end }}
   <meta property="og:image" content="{{ .Site.BaseURL }}img/site.png">
 
   <!-- Twitter Cards –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -57,9 +69,9 @@
 
   <link rel="stylesheet" href="{{ .Site.BaseURL }}css/custom.css">
 
-  {{ if .RSSlink }}
-    <link href="{{ .RSSlink }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />
-    <link href="{{ .RSSlink }}" rel="feed" type="application/rss+xml" title="{{ .Site.Title }}" />
+  {{ if .RSSLink }}
+    <link href="{{ .RSSLink }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />
+    <link href="{{ .RSSLink }}" rel="feed" type="application/rss+xml" title="{{ .Site.Title }}" />
   {{ end }}
 
   <!--- highlight js -->
@@ -72,21 +84,6 @@
   </script>
 
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.2/cookieconsent.min.css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.2/cookieconsent.min.js"></script>
-  <script>
-    window.addEventListener("load", function(){
-    window.cookieconsent.initialise({
-      "palette": {
-        "popup": {
-          "background": "#edeff5",
-          "text": "#838391"
-        },
-        "button": {
-          "background": "#4b81e8"
-        }
-      }
-    })});
-  </script>
 </head>
 
 <body>

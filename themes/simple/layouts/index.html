@@ -9,7 +9,7 @@
   <ul class="posts">
 	{{ $baseurl := .Site.BaseURL }}
 	{{ range $name, $page := .Site.Pages }}
-		{{ if eq .Type "post" }}
+		{{ if and (eq .Type "post") (eq .Kind "page") }}
 		<li>
 		  <a href="{{ .Permalink }}">{{ $page.Title }}</a>
 

@@ -8,6 +8,8 @@ disqusShortname = "rushtehrani"
 
 [params]
     highlight = "github-gist"
+    description = "Technology blog on distributed systems, machine learning and deep learning."
+    keywords = ["technology","distributed systems","machine learning","deep learning","artificial intelligence"]
 
 [author]
     email = "hello@rushtehrani.com"
